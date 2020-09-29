@@ -1,24 +1,58 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
 
-Things you may want to cover:
+| Column            | Type               | Options                       |
+| ----------------- | ------------------ | ----------------------------- |
+| email             | string             | null: false, uniqueness: true | 
+| encrypted_password| string             | null: false                   |
+| nickname          | string             | null: false                   |
+| appeal            | text               | null: false                   |
+| age_id            | integer            |                               |
+| gender_id         | integer            |                               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :outputs
+- has_many :comments
+- belongs_to_active_hash :age
+- belongs_to_active_hash :gender
 
-* Configuration
 
-* Database creation
+## outputs
 
-* Database initialization
+| Column        | Type       | Options           |
+| ------------- | ---------- | ----------------- |
+| book_genre_id | integer    | null: false       |
+| book_name     | string     | null: false       |
+| post_type_id  | integer    | null: false       |
+| post_text     | text       | null: false       |
+| user          | references | foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_many :comments
+- belongs_to_active_hash :book_name
+- belongs_to_active_hash :post_type
 
-* Deployment instructions
 
-* ...
+## comments
+
+| Column        | Type       | Options           |
+| ------------- | ---------- | ----------------- |
+| comment       | text       | null: false       |
+| output        | references | foreign_key: true |
+| user          | references | foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :output
+
+## age モデル(acrive_hash)
+
+## gender モデル(acrive_hash)
+
+## book_genre モデル(acrive_hash)
+
+## post_type モデル(acrive_hash)
