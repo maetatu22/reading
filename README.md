@@ -39,11 +39,11 @@
 
 ## comments
 
-| Column        | Type       | Options           |
-| ------------- | ---------- | ----------------- |
-| comment       | text       | null: false       |
-| output        | references | foreign_key: true |
-| user          | references | foreign_key: true |
+| Column             | Type       | Options           |
+| ------------------ | ---------- | ----------------- |
+| comment_text       | text       | null: false       |
+| output             | references | foreign_key: true |
+| user               | references | foreign_key: true |
 
 ### Association
 - belongs_to :user
