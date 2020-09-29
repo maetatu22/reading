@@ -1,2 +1,11 @@
 class Output < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :user
+  has_many :comments
+  belongs_to_active_hash :book_name
+  belongs_to_active_hash :post_type
+
+  validates :book_name, :post_text, presence: true
+
+  validates :book_name_id, :post_type_id, nemericality: { other_than: 1}
 end
