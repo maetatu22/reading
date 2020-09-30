@@ -1,0 +1,12 @@
+<div class="contents row">
+  <div class="container">
+    <h3>投稿する</h3>
+    <%= form_with model: @output, url: outputs_path,  local: true do |form| %>
+      <%= form.collection_select(:book_genre_id, BookGenre.all, :id, :name, {})%>
+      <%= form.text_field :book_name, placeholder: "本の題名" %>
+      <%= form.collection_select(:post_type_id, PostType.all, :id, :name, {})%>
+      <%= form.text_area :post_text, placeholder: "本文"%>
+      <%= form.submit "SEND" %>
+    <% end %>
+  </div>
+</div>

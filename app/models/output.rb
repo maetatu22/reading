@@ -2,7 +2,7 @@ class Output < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   has_many :comments
-  belongs_to_active_hash :book_name
+  belongs_to_active_hash :book_genre
   belongs_to_active_hash :post_type
 
   # validates :book_name, :post_text, presence: true
