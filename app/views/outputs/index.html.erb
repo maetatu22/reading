@@ -1,10 +1,10 @@
 <div class="contents row">
   <% @outputs.each do |output| %>
-    
+    <%= link_to output_path(output.id), method: :get do%>
       <p><%= output.book_name%></p>
       <span class="name">
-        <%# <%= tweet.name %>
+        <%= image_tag output.image.variant(resize:'300x300'), class: 'message-image' if output.image.attached?%>
       </span>
-    </div>
+    <% end%>
   <% end %>
 </div>
