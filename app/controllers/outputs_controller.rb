@@ -24,6 +24,11 @@ class OutputsController < ApplicationController
     output.update(output_params)
   end
 
+  def destroy
+    output = Output.find(params[:id])
+    output.destroy
+  end
+
 
 
 

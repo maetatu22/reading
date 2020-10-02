@@ -6,5 +6,6 @@
         <%= image_tag @output.image.variant(resize:'300x300'), class: 'message-image' if @output.image.attached?%>
       </span>
      <%= link_to "編集", edit_output_path(@output.id), method: :get %>
+     <%= link_to "削除", output_path(@output.id), method: :delete%>
   
 </div>
