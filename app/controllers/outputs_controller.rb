@@ -13,6 +13,8 @@ class OutputsController < ApplicationController
   
   def show
     @output = Output.find(params[:id])
+    @comment =Comment.new
+    @comments = @output.comments.includes(:user)
   end
 
   def edit

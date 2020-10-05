@@ -8,4 +8,25 @@
      <%= link_to "編集", edit_output_path(@output.id), method: :get %>
      <%= link_to "削除", output_path(@output.id), method: :delete%>
   
+  <div class="container">
+    <% if current_user %>
+      <%= form_with(model: [@output, @comment], local: true) do |form| %>
+        <%= form.text_area :comment_text, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "SEND" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+     <div class="comments">
+      <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.comment_text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
